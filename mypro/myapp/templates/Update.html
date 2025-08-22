@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}
+    AddProduct
+{% endblock title %}
+{% block main  %}
+     <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+  <h1 class="text-center">Update Product</h1>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Product Name</label>
+    <input type="text" name="pname" value={{product.product_name}} class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Product Price</label>
+    <input type="number" name="pprice" value={{product.product_price}} class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Product description:</label>
+    <textarea type="text" name="pdes"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">{{product.product_description}}</textarea>
+  </div>
+ <div class="input-group mb-3">
+  <label class="input-group-text" for="inputGroupFile01">Product Image</label>
+  <input type="file" name="pimg"  class="form-control" id="inputGroupFile01">
+  
+</div>
+
+  <button type="submit" class="btn btn-primary">Click to Update</button>
+</form>
+<img src="{{product.product_image.url}}" width=100>
+{% endblock main %}
+
+
+   {% comment %} product_name = models.CharField(max_length=100)
+    product_price = models.DecimalField(max_digits=10, decimal_places=2)
+    product_description = models.TextField()
+    product_image {% endcomment %}

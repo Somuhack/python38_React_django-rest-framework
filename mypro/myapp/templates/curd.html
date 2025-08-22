@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}
+    CURD
+{% endblock title %}
+{% block main  %}
+ <div  class="text-end m-3"><a href="{% url 'addproduct-page' %}"><button type="button" class="btn btn-success">Add Data</button></a></div>
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Price</th>
+      <th scope="col">Descripsion</th>
+      <th scope="col">Image</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+       {% for item in products %}
+    <tr>
+      <th scope="row">{{item.id}}</th>
+      <td>{{item.product_name}}</td>
+      <td>{{item.product_price}}</td>
+      <td>{{item.product_description}}</td>
+      <td><img src="{{item.product_image.url}}" width="100"></td>
+      <td class="d-flex gap-2">
+        <a href="{% url 'update-product' item.id %}"><button type="button" class="btn btn-primary">Edit</button></a>
+        <a href="{% url 'delete-product' item.id %}"><button type="button" class="btn btn-danger">Delete</button></a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+  
+{% endblock main %}
+
+
+

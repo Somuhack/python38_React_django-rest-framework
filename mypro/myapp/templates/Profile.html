@@ -1,0 +1,37 @@
+
+{% extends "base.html" %}
+{% block title %}
+    Product
+{% endblock title %}
+{% block main %}
+{% load static %}
+    <h1>Show All Profile</h1>
+
+    
+    
+      <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">PROFILE IMAGE</th>
+    </tr>
+  </thead>
+  <tbody>
+     {% for per in persons %}
+    <tr>
+      <th scope="row">{{per.id}}</th>
+      <td>{{per.name}}</td>
+      <td>{{per.email}}</td>
+      <td><img src="{{per.profile_image.url}}" width="100" alt="not found"></td>
+    </tr>
+     {% endfor %}
+    
+  </tbody>
+</table>
+   
+
+{% endblock main %}
+
+
